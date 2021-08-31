@@ -1,0 +1,42 @@
+.promo {
+  background-color: #E8E8E8;
+  padding: 0 70px;
+}
+
+.promo_inner {
+  font-family: 'Inter';
+  margin: 0 auto;
+  max-width: 1280px;
+  background-image: url('../../images/svg/landing-logo.svg');
+  background-repeat: no-repeat;
+  min-height: 574px;
+  background-size: 310px 304px;
+  background-position:  100% 75px;
+}
+
+.promo__title {
+  padding-top: 75px;
+  width: 640px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  color: #000000;
+}
+
+.promo__faculty {
+  display: block;
+}
+
+.promo__desc {
+  padding-top: 36px;
+  margin-bottom: 146px;
+  width: 310px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}

@@ -1,0 +1,49 @@
+.about-me {
+  padding: 66px 0 0;
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+}
+
+.about-me__name {
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+.about-me__education {
+  padding: 18px 0 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  mix-blend-mode: normal;
+}
+
+.about-me__about {
+  max-width: 600px;
+  padding: 26px 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.about-me__links {
+  display: flex;
+  padding: 0;
+  margin: 100px 0 0;
+  list-style-type: none;
+}
+
+.about-me__link {
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+}
+
+.about-me__link:hover {
+  transition: 0.5s;
+  opacity: 0.6;
+}

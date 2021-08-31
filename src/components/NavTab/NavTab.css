@@ -1,0 +1,19 @@
+.navTab__link {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.6;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 10px 20px;
+}
+
+.navTab__link:hover {
+  transition: 0.5s;
+  opacity: 1;
+}
