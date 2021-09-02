@@ -6,7 +6,7 @@ export default function Header() {
     <header className='header'>
       <div className='header__root'>
         <Link to='/'><div className='header__logo' /></Link>
-        <div>
+        <div className='header__links'>
           <Link to='#' className='header__link header__link_signup'>Регистрация</Link>
           <Link to='#' className='header__link header__link_signin'>Войти</Link>
         </div>

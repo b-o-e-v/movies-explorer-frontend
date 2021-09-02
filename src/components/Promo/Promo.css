@@ -4,7 +4,6 @@
 }
 
 .promo_inner {
-  font-family: 'Inter';
   margin: 0 auto;
   max-width: 1280px;
   background-image: url('../../images/svg/landing-logo.svg');
@@ -39,4 +38,61 @@
   color: #000000;
   mix-blend-mode: normal;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 990px) {
+  .promo {
+    padding: 0 50px;
+  }
+  
+  .promo_inner {
+    background-position:  50% 140px;
+    padding-bottom: 76px;
+  }
+
+  .promo__title {
+    max-width: 680px;
+    width: auto;
+    margin: 0 auto;
+    padding-top: 492px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .promo__faculty {
+    display: inline;
+  }
+
+  .promo__desc {
+    padding-top: 22px;
+    width: auto;
+    max-width: 260px;
+    text-align: center;
+    margin: 0 auto 92px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .promo {
+    padding: 0 14px;
+  }
+
+  .promo_inner {
+    background-size: 210px 206px;
+    background-position:  50% 70px;
+  }
+
+  .promo__title {
+    width: 300px;
+    padding-top: 320px;
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .promo__desc {
+    margin-bottom: 80px;
+  }
 }

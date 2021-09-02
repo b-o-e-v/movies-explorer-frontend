@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Header from './Header/Header'
 import Main from './Main/Main'
