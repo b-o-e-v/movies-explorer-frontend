@@ -20,15 +20,15 @@ export const SOCIALS = [
 export const PROJECTS = [
   {
     title: 'Статичный сайт',
-    link: '#',
+    link: 'https://github.com/b-o-e-v/how-to-learn',
   },
   {
     title: 'Адаптивный сайт',
-    link: '#',
+    link: 'https://github.com/b-o-e-v/russian-travel',
   },
   {
     title: 'Одностраничное приложение',
-    link: '#',
+    link: 'https://github.com/b-o-e-v/react-mesto-api-full',
   },
 ];
 

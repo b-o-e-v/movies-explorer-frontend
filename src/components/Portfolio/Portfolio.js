@@ -11,7 +11,12 @@ export default function Portfolio() {
         {PROJECTS.map((project, index) => {
           return (
             <li key={index} className='portfolio__item'>
-              <a href={project.link} className='portfolio__link'>
+              <a
+                href={project.link}
+                className='portfolio__link'
+                target='_blank'
+                rel='noreferrer'
+              >
                 {project.title}
                 <span className='portfolio__arrow' />
               </a>

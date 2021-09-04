@@ -26,7 +26,12 @@ export default function MoviesCard({ movie, isSavedMovies }) {
   return (
     <div className='card'>
       <div className='card___container'>
-        <a className='card__image-link' href={movie.trailer}>
+        <a
+          className='card__image-link'
+          href={movie.trailer}
+          target='_blank'
+          rel='noreferrer'
+        >
           <img
             className='card__image'
             src={movie.image}
