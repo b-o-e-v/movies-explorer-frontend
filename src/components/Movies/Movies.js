@@ -1,7 +1,13 @@
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MovieCardList/MovieCardList';
+
+import './Movies.css';
+
 export default function Movies() {
   return (
-    <div className='movies'>
-      Movies
-    </div>
+    <section className='movies'>
+      <SearchForm />
+      <MoviesCardList />
+    </section>
   );
 }

@@ -1,7 +1,8 @@
 .section {
+  box-sizing: border-box;
+  max-width: 1280px;
   padding: 110px 70px;
   margin: 0 auto;
-  max-width: 1280px;
 }
 
 .section_light {
@@ -9,6 +10,7 @@
 }
 
 .section__title {
+  margin: 0;
   padding-bottom: 23px;
   font-style: normal;
   font-weight: normal;
@@ -21,7 +23,7 @@
 .section_light .section__title {
   font-size: 18px;
   line-height: 20px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   mix-blend-mode: normal;
   border: none;
   padding: 0;
@@ -34,7 +36,7 @@
 
   .section_light {
     padding: 0 50px 100px;
-  }  
+  }
 }
 
 @media screen and (max-width: 760px) {

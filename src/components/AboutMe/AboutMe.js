@@ -1,9 +1,9 @@
-import Section from '../Section/Section'
+import Section from '../Section/Section';
 
-import avatar from '../../images/png/avatar.png'
-import { ABOUTME, SOCIALS } from '../../utils/constants'
+import avatar from '../../images/png/avatar.png';
+import { ABOUTME, SOCIALS } from '../../utils/constants';
 
-import './AboutMe.css'
+import './AboutMe.css';
 
 export default function AboutMe() {
   return (
@@ -15,7 +15,18 @@ export default function AboutMe() {
           <p className='about-me__about'>{ABOUTME.about}</p>
           <ul className='about-me__links'>
             {SOCIALS.map((link, index) => {
-              return <li key={index}><a href={link.url} className='about-me__link' target='_blank' rel='noreferrer'>{link.title}</a></li>
+              return (
+                <li key={index}>
+                  <a
+                    href={link.url}
+                    className='about-me__link'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              );
             })}
           </ul>
         </div>

@@ -1,5 +1,2 @@
-* {
-  font-family: 'Inter';
-  color: #000000;
-  margin: 0;
-}
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);

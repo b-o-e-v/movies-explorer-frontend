@@ -1,19 +1,21 @@
 .promo {
-  background-color: #E8E8E8;
-  padding: 0 70px;
+  background-color: #e8e8e8;
 }
 
 .promo_inner {
-  margin: 0 auto;
+  box-sizing: border-box;
   max-width: 1280px;
+  padding: 0 70px;
+  margin: 0 auto;
   background-image: url('../../images/svg/landing-logo.svg');
   background-repeat: no-repeat;
   min-height: 574px;
   background-size: 310px 304px;
-  background-position:  100% 75px;
+  background-position: calc(100% - 70px) 75px;
 }
 
 .promo__title {
+  margin: 0;
   padding-top: 75px;
   width: 640px;
   font-style: normal;
@@ -41,13 +43,9 @@
 }
 
 @media screen and (max-width: 990px) {
-  .promo {
-    padding: 0 50px;
-  }
-  
   .promo_inner {
-    background-position:  50% 140px;
-    padding-bottom: 76px;
+    background-position: 50% 140px;
+    padding: 0 50px 76px;
   }
 
   .promo__title {
@@ -76,13 +74,10 @@
 }
 
 @media screen and (max-width: 760px) {
-  .promo {
-    padding: 0 14px;
-  }
-
   .promo_inner {
     background-size: 210px 206px;
-    background-position:  50% 70px;
+    background-position: 50% 70px;
+    padding: 0 14px 30px;
   }
 
   .promo__title {

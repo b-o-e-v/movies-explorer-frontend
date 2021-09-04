@@ -1,8 +1,8 @@
-import Section from '../Section/Section'
+import Section from '../Section/Section';
 
-import { PROJECTS } from '../../utils/constants'
+import { PROJECTS } from '../../utils/constants';
 
-import './Portfolio.css'
+import './Portfolio.css';
 
 export default function Portfolio() {
   return (
@@ -11,9 +11,12 @@ export default function Portfolio() {
         {PROJECTS.map((project, index) => {
           return (
             <li key={index} className='portfolio__item'>
-              <a href={project.link} className='portfolio__link'>{project.title}<span className='portfolio__arrow' /></a>
+              <a href={project.link} className='portfolio__link'>
+                {project.title}
+                <span className='portfolio__arrow' />
+              </a>
             </li>
-          )
+          );
         })}
       </ul>
     </Section>

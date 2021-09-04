@@ -6,6 +6,7 @@
 }
 
 .about-me__name {
+  margin: 0;
   font-weight: normal;
   font-size: 50px;
   line-height: 58px;
@@ -13,6 +14,7 @@
 }
 
 .about-me__education {
+  margin: 0;
   padding: 18px 0 0;
   font-weight: 500;
   font-size: 18px;
@@ -21,11 +23,19 @@
 }
 
 .about-me__about {
+  margin: 0;
   max-width: 600px;
   padding: 26px 0 0;
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
+}
+
+.about-me__avatar {
+  width: 270px;
+  height: 327px;
+  margin-left: 50px;
+  object-fit: cover;
 }
 
 .about-me__links {
@@ -41,6 +51,7 @@
   font-size: 14px;
   line-height: 17px;
   text-decoration: none;
+  color: inherit;
 }
 
 .about-me__link:hover {

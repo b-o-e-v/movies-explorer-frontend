@@ -1,81 +1,262 @@
-.header {
-  background-color: #E8E8E8;
+.header_theme_gray {
+  background-color: #e8e8e8;
 }
 
-.header__root {
+.header_theme_white {
+  background-color: #ffffff;
+}
+
+.header__nav {
+  box-sizing: border-box;
   max-width: 1280px;
-  height: 74px;
-  padding: 0 70px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header__logo {
-  width: 38px;
-  height: 38px;
-  background-image: url('../../images/svg/logo.svg');
-  background-size: 100% 100%;
-}
-
-.header__logo:hover,
-.header__link:hover {
-  transition: 0.5s;
-  opacity: 0.6;
+  padding: 20px 70px;
 }
 
 .header__links {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.header__links_left {
+  width: 280px;
+}
+
+.header__links_right {
+  width: 180px;
 }
 
 .header__link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 16px;
   text-decoration: none;
 }
 
-.header__link_signin {
-  display: inline-block;
-  width: 76px;
-  height: 32px;
-  background: #000000;
-  border-radius: 3px;
-  font-size: 12px;
-  line-height: 16px;  
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header__links-item_logo {
+  margin-right: 15px;
 }
 
-.header__link_signup {
-  font-size: 12px;
+.header__link:hover {
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+.header__link_type_signin {
+  display: block;
+  padding: 8px 20px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 3px;
+}
+
+.header__link_type_films,
+.header__link_type_savedfilms {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.header__link-active_type_films,
+.header__link-active_type_savedfilms {
+  font-weight: 500;
+}
+
+.header__link_type_account {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  padding: 4px 4px 4px 12px;
+}
+
+.header__link_type_account::after {
+  content: '';
+  background-image: url('../../images/svg/accountIcon.svg');
+  background-color: #f9f9f9;
+  background-position: center;
+  background-size: 10.4px 10.7px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  margin-left: 10px;
+}
+
+.header__menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  visibility: hidden;
+}
+
+.header__menu-wrapper_visible {
+  visibility: visible;
+}
+
+.header__menu-button {
+  width: 44px;
+  height: 44px;
+  background-image: url('../../images/svg/burgerIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.header__menu-button:hover {
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+.header__menu-links-wrapper {
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: 0.3s;
+  visibility: hidden;
+  padding: 112px 90px 92px;
+  width: 50%;
+}
+
+.visible-animation {
+  transition: 0.3s;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.header__menu-button-close {
+  width: 22px;
+  height: 22px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: inherit;
+  background-image: url('../../images/svg/closeIcon.svg');
+  border: none;
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__menu-button-close:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+.header__menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  list-style-type: none;
+  height: 100%;
+  padding: 0;
+}
+
+.header__menu-links-item {
+  margin-bottom: 28px;
+}
+
+.header__menu-links-item:last-of-type {
+  margin: auto 0 0;
+}
+
+.header__menu-link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000;
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+
+.header__menu-link:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+.header__menu-link_active {
+  border-bottom: 2px solid #000;
+}
+
+.header__menu-link_type_account {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
   line-height: 16px;
-  margin-right: 30px;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border-radius: 40px;
+  padding: 4px 4px 4px 12px;
+}
+
+.header__menu-link_type_account::after {
+  content: '';
+  background-image: url('../../images/svg/accountIcon.svg');
+  background-color: #f9f9f9;
+  background-position: center;
+  background-size: 10.4px 10.7px;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  margin-left: 10px;
 }
 
 @media screen and (max-width: 990px) {
-  .header__root {
-    padding: 0 30px;
+  .header__link_type_account {
+    display: none;
+  }
+
+  .header__link_type_films {
+    display: none;
+  }
+
+  .header__link_type_savedfilms {
+    display: none;
+  }
+
+  .header__menu-button {
+    display: block;
+  }
+
+  .header__nav {
+    padding: 18px 30px;
   }
 }
 
 @media screen and (max-width: 760px) {
-  .header__root {
-    padding: 0 14px;
-  }  
-  
-  .header__link_signin,
-  .header__link_signup {
-    font-size: 10px;
+  .header__menu-links-wrapper {
+    width: 100%;
+    padding: 100px 10px 44px;
   }
 
-  .header__link_signup {
-    margin-right: 14px;
+  .header__nav {
+    padding: 18px 14px;
   }
 
-  .header__link_signin {
-    width: 54px;
-    height: 26px;
+  .header__menu-button {
+    width: 40px;
+    height: 43px;
   }
 }
