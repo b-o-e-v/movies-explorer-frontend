@@ -1,6 +1,6 @@
 import Section from '../Section/Section';
 
-import avatar from '../../images/png/avatar.png';
+import avatar from '../../images/jpg/avatar.jpg';
 import { ABOUTME, SOCIALS } from '../../utils/constants';
 
 import './AboutMe.css';
