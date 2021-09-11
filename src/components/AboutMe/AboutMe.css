@@ -1,0 +1,117 @@
+.about-me {
+  padding: 66px 0 0;
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+}
+
+.about-me__name {
+  margin: 0;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+.about-me__education {
+  margin: 0;
+  padding: 18px 0 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  mix-blend-mode: normal;
+}
+
+.about-me__about {
+  margin: 0;
+  max-width: 600px;
+  padding: 26px 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.about-me__avatar {
+  width: 270px;
+  height: 327px;
+  margin-left: 50px;
+  object-fit: cover;
+}
+
+.about-me__links {
+  display: flex;
+  padding: 0;
+  margin: 100px 0 0;
+  list-style-type: none;
+}
+
+.about-me__link {
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-me__link:hover {
+  transition: 0.5s;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 990px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__education {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__about {
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__avatar {
+    width: 255px;
+    height: 307px;
+    margin-left: 50px;
+  }
+
+  .about-me__links {
+    margin-top: 85px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .about-me {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+  }
+
+  .about-me__avatar {
+    margin: 0 auto 40px;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__education,
+  .about-me__about {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__links {
+    margin-top: 40px;
+  }
+}

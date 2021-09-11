@@ -1,0 +1,135 @@
+.about-project,
+.about-progress {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.about-project__block {
+  width: 550px;
+}
+
+.about-project__block:first-child {
+  margin-right: 20px;
+}
+
+.about-project__subtitle {
+  margin-top: 0;
+  font-style: inherit;
+  font-weight: inherit;
+  margin-bottom: 26px;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__paragraph {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about-progress__back-end {
+  width: 20%;
+}
+
+.about-progress__back-end_time {
+  height: 36px;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background: #000000;
+}
+
+.about-progress__front-end {
+  width: 80%;
+}
+
+.about-progress__front-end_time {
+  height: 36px;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;
+}
+
+.about-progress__back-end_title,
+.about-progress__front-end_title {
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a0a0a0;
+  margin-top: 14px;
+}
+
+@media screen and (max-width: 990px) {
+  .about-project__block {
+    width: 50%;
+  }
+
+  .about-project__subtitle {
+    margin-bottom: 22px;
+  }
+
+  .about-project__paragraph {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .about-project {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .about-project__block,
+  .about-progress {
+    margin-top: 60px;
+  }
+
+  .about-project__block {
+    width: 100%;
+  }
+
+  .about-project__subtitle {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+
+  .about-project__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-progress__back-end_time {
+    height: 35px;
+  }
+
+  .about-progress__back-end {
+    min-width: 100px;
+  }
+
+  .about-progress__back-end_time,
+  .about-progress__back-end_title,
+  .about-progress__front-end_time,
+  .about-progress__front-end_title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-progress__back-end_title,
+  .about-progress__front-end_title {
+    margin-top: 10px;
+  }
+}

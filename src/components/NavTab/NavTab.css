@@ -1,0 +1,29 @@
+.navTab__link {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  opacity: 1;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 129px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+}
+
+.navTab__link:hover {
+  transition: 0.5s;
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 990px) {
+  .navTab__link {
+    margin: 0 auto;
+  }
+}
