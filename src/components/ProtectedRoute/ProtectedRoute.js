@@ -1,8 +1,9 @@
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-// Для следующего этапа диплома
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute({ isLoggedIn, children }) {
   return (
-    <Route>{children}</Route>
+    <Route>
+      {isLoggedIn ? children : <Redirect to="/signin" />}
+    </Route>
   )
 }

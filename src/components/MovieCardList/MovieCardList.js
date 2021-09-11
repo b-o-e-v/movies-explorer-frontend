@@ -10,8 +10,8 @@ export default function MoviesCardList({
   movies,
   moviesError,
   notFound,
-  handleSaveMovie,
-  handleDeleteMovie,
+  saveMovie,
+  deleteMovie,
   isSavedMovies,
 }) {
   const [initialCardsAmount, setInitialCardsAmount] = useState(() => {
@@ -92,7 +92,12 @@ export default function MoviesCardList({
                 key={movie.movieId || movie.id}
                 className='movies-list__list-item'
               >
-                <MoviesCard movie={movie} isSavedMovies={isSavedMovies} />
+                <MoviesCard
+                  movie={movie}
+                  saveMovie={saveMovie}
+                  deleteMovie={deleteMovie}
+                  isSavedMovies={isSavedMovies}
+                />
               </li>
             );
           })}

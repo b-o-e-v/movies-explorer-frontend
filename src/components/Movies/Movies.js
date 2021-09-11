@@ -11,8 +11,8 @@ export default function Movies({
   isLoading,
   moviesError,
   notFound,
-  handleSaveMovie,
-  handleDeleteMovie,
+  saveMovie,
+  deleteMovie,
 }) {
   return (
     <section className='movies'>
@@ -26,8 +26,8 @@ export default function Movies({
         movies={movies}
         moviesError={moviesError}
         notFound={notFound}
-        handleSaveMovie={handleSaveMovie}
-        handleDeleteMovie={handleDeleteMovie}
+        saveMovie={saveMovie}
+        deleteMovie={deleteMovie}
       />
     </section>
   );

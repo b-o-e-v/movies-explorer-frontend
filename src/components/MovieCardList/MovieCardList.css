@@ -40,6 +40,8 @@
 .movies-list__error,
 .movies-list__not-found,
 .movies-list__no-saved-films {
+  display: block;
+  width: 100%;
   color: #000000;
   font-size: 14px;
   font-weight: 400;
