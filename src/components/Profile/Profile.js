@@ -19,7 +19,7 @@ export default function Profile({
 
   const inputRef = useRef();
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     handleEditUserInfo(
       values.name || currentUser.name,

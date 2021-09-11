@@ -47,13 +47,11 @@ export default function App() {
     mainApi
       .signup(name, email, password)
       .then((res) => {
-        console.log(res);
         setRegisterMessage('');
         setIsSubmitting(false);
         history.push('/signin');
       })
       .catch((err) => {
-        console.log(err);
         if (err === 'Error: 400 Bad Request') {
           setRegisterMessage('Данные невалидны');
         } else if (err === 'Error: 409 Conflict') {
@@ -79,7 +77,6 @@ export default function App() {
         history.push('/movies');
       })
       .catch((err) => {
-        console.log(err);
         if (err === 'Error: 401 Unauthorized') {
           setLoginMessage('Неправильные почта или пароль!');
         } else {
@@ -106,7 +103,7 @@ export default function App() {
       });
   };
 
-  function handleSignout() {
+  const handleSignout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
     setApiMovies([]);
@@ -185,12 +182,11 @@ export default function App() {
       .saveMovie(movie, token)
       .then((data) => {
         const movies = [...savedMovies, data];
-        console.log('hello')
         setSavedMovies((prev) => [...prev, data]);
         localStorage.setItem('savedMovies', JSON.stringify(movies));
+        console.log(apiMovies, data)
       })
       .catch((err) => console.log(`Error: ${err}`));
-    console.log(localStorage.getItem('jwt'));
   };
 
   const searchSavedMovies = (keyword) => {
@@ -290,7 +286,7 @@ export default function App() {
               movies={savedMovies}
               moviesError={moviesError}
               notFound={notFound}
-              handleDeleteMovie={deleteMovie}
+              deleteMovie={deleteMovie}
             />
             <Footer />
           </ProtectedRoute>

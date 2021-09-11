@@ -44,20 +44,18 @@ export default function MoviesCard({
 
   const handleSaveMovie = () => {
     saveMovie(film);
-    console.log(film);
     setIsSaved(true);
   };
 
   const handleDeleteMovie = () => {
     setIsSaved(false);
-    console.log(movie._id)
     deleteMovie(movie._id);
   };
 
   const handleDislikeMovie = () => {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
     const card = savedMovies.find((mov) => mov.nameRU === movie.nameRU);
-    handleDeleteMovie(card._id);
+    deleteMovie(card._id);
     setIsSaved(false);
   };
 

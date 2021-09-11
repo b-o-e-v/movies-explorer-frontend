@@ -8,11 +8,11 @@ import './Header.css';
 export default function Header({ isLoggedIn }) {
   const [showMenu, setIsShowMenu] = useState(false);
 
-  function openMenu() {
+  const openMenu = () => {
     setIsShowMenu(true);
   }
 
-  function closeMenu() {
+  const closeMenu = () => {
     setIsShowMenu(false);
   }
 
