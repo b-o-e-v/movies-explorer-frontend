@@ -1,10 +1,10 @@
 import './Checkbox.css';
 
-export default function Checkbox() {
+export default function Checkbox({ handleShortMovies, isShortMovies }) {
   return (
-    <label className='filtercheckbox'>
-      <input className='filtercheckbox__input' type='checkbox' />
-      <span className='filtercheckbox__visible-input'></span>
+    <label className='checkbox'>
+      <input className='checkbox__input' type='checkbox' onChange={handleShortMovies} checked={isShortMovies} />
+      <span className='checkbox__visible-input'></span>
       Короткометражки
     </label>
   );

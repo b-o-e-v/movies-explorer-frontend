@@ -11,7 +11,7 @@ export default function MoviesCard({ movie, isSavedMovies }) {
     duration: movie.duration || 0,
     year: movie.year || 'Не указано',
     description: movie.description || 'Описание',
-    image: movie.image,
+    image: `https://api.nomoreparties.co${movie.image?.url}`,
     trailer: movie?.trailerLink,
     nameRU: movie.nameRU || 'Название',
     nameEN: movie.nameEN || 'Англ название',
@@ -28,18 +28,18 @@ export default function MoviesCard({ movie, isSavedMovies }) {
       <div className='card___container'>
         <a
           className='card__image-link'
-          href={movie.trailer}
+          href={film.trailer}
           target='_blank'
           rel='noreferrer'
         >
           <img
             className='card__image'
-            src={movie.image}
+            src={film.image}
             alt='Картинка фильма'
           />
         </a>
         <div className='card__wrapper'>
-          <h2 className='card__title'>{movie.nameRU}</h2>
+          <h2 className='card__title'>{film.nameRU}</h2>
           <button
             className={`card__btn 
             ${like && !isSavedMovies && 'active-btn-like'} 
