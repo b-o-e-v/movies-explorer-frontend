@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import image from '../../images/jpg/notFoundImage.jpeg';
 
 import './MoviesCard.css';
 
@@ -16,11 +17,15 @@ export default function MoviesCard({
     duration: movie.duration || 0,
     year: movie.year || 'Не указано',
     description: movie.description || 'Описание',
-    image: `https://api.nomoreparties.co${movie.image?.url}`,
+    image: movie.image
+      ? movie.image.url
+        ? `https://api.nomoreparties.co${movie.image.url}`
+        : movie.image
+      : image,
     trailer: movie?.trailerLink,
     nameRU: movie.nameRU || 'Название',
-    nameEN: movie.nameEN || 'Англ название',
-    thumbnail: movie.thumbnail,
+    nameEN: movie.nameEN || 'Title',
+    thumbnail: `https://api.nomoreparties.co${movie.image?.formats?.thumbnail?.url}`,
     movieId: movie.id,
   };
 
@@ -45,6 +50,7 @@ export default function MoviesCard({
 
   const handleDeleteMovie = () => {
     setIsSaved(false);
+    console.log(movie._id)
     deleteMovie(movie._id);
   };
 

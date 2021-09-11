@@ -8,9 +8,7 @@ export default function SavedMovies({
   handleSearchSavedMovies,
   handleShortMovies,
   movies,
-  moviesError,
-  notFound,
-  handleDeleteMovie,
+  deleteMovie,
 }) {
   return (
     <section className='saved-movies'>
@@ -23,7 +21,7 @@ export default function SavedMovies({
       <MoviesCardList
         isSavedMovies={true}
         movies={movies}
-        handleDeleteMovie={handleDeleteMovie}
+        deleteMovie={deleteMovie}
       />
     </section>
   );

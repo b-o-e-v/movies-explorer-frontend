@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 import { getMovies } from '../../utils/MoviesApi';
 import mainApi from '../../utils/MainApi';
@@ -21,6 +21,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export default function App() {
   const history = useHistory();
+  const location = useLocation();
+
   const [currentUser, setCurrentUser] = useState({});
   // Поиск фильма
   const [isLoading, setIsLoading] = useState(false);
@@ -183,9 +185,9 @@ export default function App() {
       .saveMovie(movie, token)
       .then((data) => {
         const movies = [...savedMovies, data];
+        console.log('hello')
         setSavedMovies((prev) => [...prev, data]);
         localStorage.setItem('savedMovies', JSON.stringify(movies));
-        console.log(movie);
       })
       .catch((err) => console.log(`Error: ${err}`));
     console.log(localStorage.getItem('jwt'));
@@ -233,6 +235,17 @@ export default function App() {
   useEffect(() => {
     checkToken();
   }, [history, isLoggedIn, checkToken]);
+
+  useEffect(() => {
+    if(isLoggedIn) {
+    mainApi.getSavedMovies(token)
+      .then((res) => {
+        const films = res.filter((item) => item.owner === currentUser._id)
+        setSavedMovies(films);
+      })
+      .catch(err => console.log(err));
+    }
+  }, [location, currentUser._id, isLoggedIn, token])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

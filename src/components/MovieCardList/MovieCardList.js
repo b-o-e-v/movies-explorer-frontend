@@ -107,7 +107,7 @@ export default function MoviesCardList({
           isSavedMovies
             ? 'movies-list__add-btn movies-list__add-btn_disabled'
             : `movies-list__add-btn ${
-                movies && movies.length === renderedMovies.length
+              !movies || (movies && movies.length === renderedMovies.length)
                   ? ' movies-list__add-btn_disabled'
                   : ''
               }`
