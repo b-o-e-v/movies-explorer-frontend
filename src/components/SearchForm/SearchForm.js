@@ -9,7 +9,7 @@ export default function SearchForm({
   isShortMovies,
   handleSearchMovies,
   handleSearchSavedMovies,
-  handleShortMovies
+  handleShortMovies,
 }) {
   const [searchInput, setSearchInput] = useState('');
   const [isSearchFormValid, setIsSearchFormValid] = useState(true);
@@ -17,17 +17,17 @@ export default function SearchForm({
   const onSubmit = (e) => {
     e.preventDefault();
     handleSearchMovies(searchInput);
-  }
+  };
 
   const onSubmitSavedMovies = (e) => {
     e.preventDefault();
     handleSearchSavedMovies(searchInput);
-  }
+  };
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);
     setIsSearchFormValid(e.target.checkValidity());
-  }
+  };
 
   return (
     <section className='search'>
@@ -46,8 +46,17 @@ export default function SearchForm({
           />
           <button className='search__submit' type='submit'></button>
         </fieldset>
-        <span className={`search__input-error ${isSearchFormValid ? 'search__input-error_hidden' : ''}`}>Это поле обязательно</span>
-        <Checkbox handleShortMovies={handleShortMovies} isShortMovies={isShortMovies} />
+        <span
+          className={`search__input-error ${
+            isSearchFormValid ? 'search__input-error_hidden' : ''
+          }`}
+        >
+          Это поле обязательно
+        </span>
+        <Checkbox
+          handleShortMovies={handleShortMovies}
+          isShortMovies={isShortMovies}
+        />
       </form>
     </section>
   );

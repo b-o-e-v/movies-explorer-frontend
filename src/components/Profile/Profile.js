@@ -25,7 +25,7 @@ export default function Profile({
       values.name || currentUser.name,
       values.email || currentUser.email
     );
-  }
+  };
 
   return (
     <section className='profile'>
@@ -72,7 +72,15 @@ export default function Profile({
           />
         </label>
         <span className='auth__input-error'>{errors.email}</span>
-        <span className={`profile__form-message ${isSucced ? 'profile__form-message_succeed' : 'profile__form-message_error'}`}>{editProfileMessage}</span>
+        <span
+          className={`profile__form-message ${
+            isSucced
+              ? 'profile__form-message_succeed'
+              : 'profile__form-message_error'
+          }`}
+        >
+          {editProfileMessage}
+        </span>
         <button
           className={`${
             isValid

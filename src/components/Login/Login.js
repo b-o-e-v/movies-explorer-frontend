@@ -6,22 +6,19 @@ import Logo from '../Logo/Logo';
 import '../Form/Form.css';
 
 export default function Login({ login, errorMessage, isSubmitting }) {
-  const {values, handleErrors, errors, isValid} = useValidationForm();
+  const { values, handleErrors, errors, isValid } = useValidationForm();
 
   const handleLogin = (e) => {
     e.preventDefault();
     login(values.email, values.password);
-  }
+  };
 
   return (
     <section className='form'>
       <div className='form__wrapper'>
         <Logo />
         <h2 className='form__title'>Рады видеть!</h2>
-        <form
-          className='form__form'
-           onSubmit={handleLogin}
-        >
+        <form className='form__form' onSubmit={handleLogin}>
           <fieldset className='form__fieldset login__fieldset'>
             <label htmlFor='email' className='form__label'>
               E-mail
@@ -53,7 +50,7 @@ export default function Login({ login, errorMessage, isSubmitting }) {
               <span className='form__input-error'>{errors.password}</span>
             </label>
           </fieldset>
-          <span className="form__submit-error">{errorMessage}</span>
+          <span className='form__submit-error'>{errorMessage}</span>
           <button
             className={`${
               isValid ? 'form__submit' : 'form__submit form__submit_disabled'

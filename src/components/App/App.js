@@ -24,11 +24,8 @@ export default function App() {
   const location = useLocation();
 
   const [currentUser, setCurrentUser] = useState({});
-  // Поиск фильма
   const [isLoading, setIsLoading] = useState(false);
-  // Все фильмы
   const [apiMovies, setApiMovies] = useState([]);
-  // Найденные фильмы
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isShortMovies, setIsShortMovies] = useState(false);
@@ -108,9 +105,9 @@ export default function App() {
     localStorage.removeItem('movies');
     setApiMovies([]);
     setMovies([]);
-    setIsLoggedIn(false)
+    setIsLoggedIn(false);
     history.push('/');
-  }
+  };
 
   const handleShortMovies = (e) => {
     setIsShortMovies(e.target.checked);
@@ -184,7 +181,7 @@ export default function App() {
         const movies = [...savedMovies, data];
         setSavedMovies((prev) => [...prev, data]);
         localStorage.setItem('savedMovies', JSON.stringify(movies));
-        console.log(apiMovies, data)
+        console.log(apiMovies, data);
       })
       .catch((err) => console.log(`Error: ${err}`));
   };
@@ -233,15 +230,16 @@ export default function App() {
   }, [history, isLoggedIn, checkToken]);
 
   useEffect(() => {
-    if(isLoggedIn) {
-    mainApi.getSavedMovies(token)
-      .then((res) => {
-        const films = res.filter((item) => item.owner === currentUser._id)
-        setSavedMovies(films);
-      })
-      .catch(err => console.log(err));
+    if (isLoggedIn) {
+      mainApi
+        .getSavedMovies(token)
+        .then((res) => {
+          const films = res.filter((item) => item.owner === currentUser._id);
+          setSavedMovies(films);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [location, currentUser._id, isLoggedIn, token])
+  }, [location, currentUser._id, isLoggedIn, token]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -5,27 +5,20 @@ import Logo from '../Logo/Logo';
 
 import '../Form/Form.css';
 
-export default function Register({
-  register,
-  errorMessage,
-  isSubmitting,
-}) {
-  const {values, handleErrors, errors, isValid} = useValidationForm();
+export default function Register({ register, errorMessage, isSubmitting }) {
+  const { values, handleErrors, errors, isValid } = useValidationForm();
 
   const handleRegister = (e) => {
     e.preventDefault();
     register(values.name, values.email, values.password);
-  }
+  };
 
   return (
     <section className='form'>
       <div className='form__wrapper'>
         <Logo />
         <h2 className='form__title'>Добро пожаловать!</h2>
-        <form
-          className='form__form'
-          onSubmit={handleRegister}
-        >
+        <form className='form__form' onSubmit={handleRegister}>
           <fieldset className='form__fieldset register__fieldset'>
             <label htmlFor='name' className='form__label'>
               Имя
@@ -72,7 +65,7 @@ export default function Register({
               <span className='form__input-error'>{errors.password}</span>
             </label>
           </fieldset>
-          <span className="form__submit-error">{errorMessage}</span>
+          <span className='form__submit-error'>{errorMessage}</span>
           <button
             className={`${
               isValid ? 'form__submit' : 'form__submit form__submit_disabled'

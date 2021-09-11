@@ -18,12 +18,12 @@ export default function MoviesCardList({
     const size = window.innerWidth;
     if (size < 720) {
       return 5;
-    } else if (size < 920) {
+    } else if (size < 989) {
       return 8;
     } else if (size < 1279) {
       return 12;
     } else if (size > 1279) {
-      return 12;
+      return 16;
     }
   });
 
@@ -31,7 +31,7 @@ export default function MoviesCardList({
     const size = window.innerWidth;
     if (size < 720) {
       return 2;
-    } else if (size < 920) {
+    } else if (size < 989) {
       return 2;
     } else if (size < 1279) {
       return 3;
@@ -107,7 +107,7 @@ export default function MoviesCardList({
           isSavedMovies
             ? 'movies-list__add-btn movies-list__add-btn_disabled'
             : `movies-list__add-btn ${
-              !movies || (movies && movies.length === renderedMovies.length)
+                !movies || (movies && movies.length === renderedMovies.length)
                   ? ' movies-list__add-btn_disabled'
                   : ''
               }`
