@@ -29,6 +29,9 @@
 }
 
 .not-found__link {
+  border: none;
+  background: none;
+  cursor: pointer;
   color: inherit;
   text-decoration: none;
   font-size: 14px;

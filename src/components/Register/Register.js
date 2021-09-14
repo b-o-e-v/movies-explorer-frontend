@@ -5,12 +5,12 @@ import Logo from '../Logo/Logo';
 
 import '../Form/Form.css';
 
-export default function Register({ register, errorMessage, isSubmitting }) {
+export default function Register({ onRegister, errorMessage, isSubmitting }) {
   const { values, handleErrors, errors, isValid } = useValidationForm();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    register(values.name, values.email, values.password);
+    onRegister(values.name, values.email, values.password);
   };
 
   return (

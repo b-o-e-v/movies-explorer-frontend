@@ -5,12 +5,12 @@ import Logo from '../Logo/Logo';
 
 import '../Form/Form.css';
 
-export default function Login({ login, errorMessage, isSubmitting }) {
+export default function Login({ onLogin, errorMessage, isSubmitting }) {
   const { values, handleErrors, errors, isValid } = useValidationForm();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login(values.email, values.password);
+    onLogin(values.email, values.password);
   };
 
   return (

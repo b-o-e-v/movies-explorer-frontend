@@ -21,7 +21,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export default function App() {
   const history = useHistory();
-  const location = useLocation();
+  const pathname = useLocation();
 
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -39,14 +39,56 @@ export default function App() {
   const [editProfileMessage, setEditProfileMessage] = useState('');
   const [isSucced, setIsSucced] = useState(false);
 
-  const register = (name, email, password) => {
+  const handleShortMovies = (e) => {
+    setIsShortMovies(e.target.checked);
+  };
+
+  const onLogin = (email, password) => {
+    setIsSubmitting(true);
+    mainApi
+      .signin(email, password)
+      .then((data) => {
+        if (data.token) {
+          setToken(data.token);
+          localStorage.setItem('jwt', data.token);
+          setIsLoggedIn(true);
+          history.push('/movies');
+          mainApi
+            .getProfileInfo(data.token)
+            .then((user) => {
+              setCurrentUser(user);
+              mainApi
+                .getSavedMovies(data.token)
+                .then((res) => {
+                  const films = res.filter((item) => item.owner === user._id);
+                  setSavedMovies(films);
+                  localStorage.setItem('savedMovies', JSON.stringify(films));
+                })
+                .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(`Error: ${err}`));
+        }
+      })
+      .catch((err) => {
+        if (err === 'Error: 401 Unauthorized') {
+          setLoginMessage('Неправильные почта или пароль!');
+        } else {
+          setLoginMessage('Что-то пошло не так, попробуйте ещё раз!');
+        }
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
+  const onRegister = (name, email, password) => {
     setIsSubmitting(true);
     mainApi
       .signup(name, email, password)
       .then((res) => {
-        setRegisterMessage('');
-        setIsSubmitting(false);
-        history.push('/signin');
+        if (res._id) {
+          onLogin(email, password);
+        }
       })
       .catch((err) => {
         if (err === 'Error: 400 Bad Request') {
@@ -62,26 +104,6 @@ export default function App() {
       });
   };
 
-  const login = (email, password) => {
-    setIsSubmitting(true);
-    mainApi
-      .signin(email, password)
-      .then((res) => {
-        setIsLoggedIn(true);
-        localStorage.setItem('jwt', res.token);
-        setToken(localStorage.getItem('jwt'));
-        setLoginMessage('');
-        history.push('/movies');
-      })
-      .catch((err) => {
-        if (err === 'Error: 401 Unauthorized') {
-          setLoginMessage('Неправильные почта или пароль!');
-        } else {
-          setLoginMessage('Что-то пошло не так, попробуйте ещё раз!');
-        }
-      });
-  };
-
   const handleEditUserInfo = (name, email) => {
     mainApi
       .editProfileInfo(name, email, token)
@@ -90,9 +112,11 @@ export default function App() {
           setEditProfileMessage(res.message);
           setIsSucced(false);
         }
-        setCurrentUser(res);
-        setEditProfileMessage('Данные успешно обновлены!');
-        setIsSucced(true);
+        if (res._id) {
+          setCurrentUser(res);
+          setEditProfileMessage('Данные успешно обновлены!');
+          setIsSucced(true);
+        }
       })
       .catch((err) => {
         setEditProfileMessage('Произошла ошибка!');
@@ -100,24 +124,29 @@ export default function App() {
       });
   };
 
+  const clearAllErrors = () => {
+    setLoginMessage('');
+    setRegisterMessage('');
+    setNotFound(false);
+    setEditProfileMessage('');
+  };
+
   const handleSignout = () => {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
+    localStorage.removeItem('savedMovies');
+    setIsLoggedIn(false);
     setApiMovies([]);
     setMovies([]);
-    setIsLoggedIn(false);
+    setSavedMovies([]);
+    clearAllErrors();
     history.push('/');
   };
 
-  const handleShortMovies = (e) => {
-    setIsShortMovies(e.target.checked);
-  };
-
   const searchMoviesByKeyword = (movies, keyword) => {
-    let foundMovies = [];
-
+    const foundMovies = [];
     movies.forEach((movie) => {
-      if (movie.nameRU.indexOf(keyword) > -1) {
+      if (movie.nameRU.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
         if (isShortMovies) {
           movie.duration <= 40 && foundMovies.push(movie);
         } else {
@@ -125,7 +154,6 @@ export default function App() {
         }
       }
     });
-
     return foundMovies;
   };
 
@@ -137,9 +165,10 @@ export default function App() {
 
     if (apiMovies.length === 0) {
       getMovies()
-        .then((resMovies) => {
-          setApiMovies(resMovies);
-          const searchResult = searchMoviesByKeyword(resMovies, keyword);
+        .then((res) => {
+          setApiMovies(res);
+          setMovies(res);
+          const searchResult = searchMoviesByKeyword(res, keyword);
 
           if (searchResult.length === 0) {
             setNotFound(true);
@@ -181,7 +210,6 @@ export default function App() {
         const movies = [...savedMovies, data];
         setSavedMovies((prev) => [...prev, data]);
         localStorage.setItem('savedMovies', JSON.stringify(movies));
-        console.log(apiMovies, data);
       })
       .catch((err) => console.log(`Error: ${err}`));
   };
@@ -209,37 +237,33 @@ export default function App() {
   };
 
   const checkToken = useCallback(() => {
-    if (localStorage.getItem('jwt')) {
-      let token = localStorage.getItem('jwt');
-      const movies = JSON.parse(localStorage.getItem('movies'));
+    const token = localStorage.getItem('jwt');
+    const movies = localStorage.getItem('movies');
+    const savedMovies = localStorage.getItem('savedMovies');
+    if (token) {
       setToken(token);
+      if (movies) {
+        const result = JSON.parse(movies);
+        setMovies(result);
+      }
+      if (savedMovies) {
+        const res = JSON.parse(savedMovies);
+        setSavedMovies(res);
+      }
       mainApi
         .getProfileInfo(token)
-        .then((res) => {
+        .then((user) => {
+          setCurrentUser(user);
           setIsLoggedIn(true);
-          setCurrentUser(res);
-          setMovies(movies);
-          history.push('/movies');
+          history.push(pathname.pathname);
         })
         .catch((err) => console.log(err));
     }
-  }, [history]);
+  }, [pathname.pathname, history]);
 
   useEffect(() => {
     checkToken();
-  }, [history, isLoggedIn, checkToken]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      mainApi
-        .getSavedMovies(token)
-        .then((res) => {
-          const films = res.filter((item) => item.owner === currentUser._id);
-          setSavedMovies(films);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [location, currentUser._id, isLoggedIn, token]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -254,7 +278,6 @@ export default function App() {
             <Header isLoggedIn={isLoggedIn} />
             <Profile
               editProfileMessage={editProfileMessage}
-              isSubmitting={isSubmitting}
               handleEditUserInfo={handleEditUserInfo}
               handleSignout={handleSignout}
               isSucced={isSucced}
@@ -290,14 +313,14 @@ export default function App() {
           </ProtectedRoute>
           <Route path='/signup'>
             <Register
-              register={register}
+              onRegister={onRegister}
               errorMessage={registerMessage}
               isSubmitting={isSubmitting}
             />
           </Route>
           <Route path='/signin'>
             <Login
-              login={login}
+              onLogin={onLogin}
               errorMessage={loginMessage}
               isSubmitting={isSubmitting}
             />
