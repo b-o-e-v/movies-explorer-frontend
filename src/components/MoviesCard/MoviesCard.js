@@ -22,7 +22,7 @@ export default function MoviesCard({
         ? `https://api.nomoreparties.co${movie.image.url}`
         : movie.image
       : image,
-    trailer: movie?.trailerLink,
+    trailer: movie.trailerLink || movie.trailer,
     nameRU: movie.nameRU || 'Название',
     nameEN: movie.nameEN || 'Title',
     thumbnail: `https://api.nomoreparties.co${movie.image?.formats?.thumbnail?.url}`,

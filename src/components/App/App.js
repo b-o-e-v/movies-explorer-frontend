@@ -21,7 +21,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export default function App() {
   const history = useHistory();
-  const pathname = useLocation();
+  const location = useLocation();
+  const pathname = location.pathname;
 
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -255,11 +256,11 @@ export default function App() {
         .then((user) => {
           setCurrentUser(user);
           setIsLoggedIn(true);
-          history.push(pathname.pathname);
+          history.push(pathname);
         })
         .catch((err) => console.log(err));
     }
-  }, [pathname.pathname, history]);
+  }, [history, pathname]);
 
   useEffect(() => {
     checkToken();
