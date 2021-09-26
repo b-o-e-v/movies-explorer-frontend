@@ -5,20 +5,20 @@ import Logo from '../Logo/Logo';
 
 import '../Form/Form.css';
 
-export default function Login() {
-  const { handleErrors, errors, isValid } = useValidationForm();
+export default function Login({ onLogin, errorMessage, isSubmitting }) {
+  const { values, handleErrors, errors, isValid } = useValidationForm();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    onLogin(values.email, values.password);
+  };
 
   return (
     <section className='form'>
       <div className='form__wrapper'>
         <Logo />
         <h2 className='form__title'>Рады видеть!</h2>
-        <form
-          className='form__form'
-          onSubmit={() => {
-            console.log('вы вошли');
-          }}
-        >
+        <form className='form__form' onSubmit={handleLogin}>
           <fieldset className='form__fieldset login__fieldset'>
             <label htmlFor='email' className='form__label'>
               E-mail
@@ -30,6 +30,7 @@ export default function Login() {
                 id='email'
                 required
                 onChange={handleErrors}
+                disabled={isSubmitting}
               />
               <span className='form__input-error'>{errors.email}</span>
             </label>
@@ -44,10 +45,12 @@ export default function Login() {
                 required
                 onChange={handleErrors}
                 minLength='4'
+                disabled={isSubmitting}
               />
               <span className='form__input-error'>{errors.password}</span>
             </label>
           </fieldset>
+          <span className='form__submit-error'>{errorMessage}</span>
           <button
             className={`${
               isValid ? 'form__submit' : 'form__submit form__submit_disabled'

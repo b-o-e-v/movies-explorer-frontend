@@ -8,13 +8,13 @@ import './Header.css';
 export default function Header({ isLoggedIn }) {
   const [showMenu, setIsShowMenu] = useState(false);
 
-  function openMenu() {
+  const openMenu = () => {
     setIsShowMenu(true);
-  }
+  };
 
-  function closeMenu() {
+  const closeMenu = () => {
     setIsShowMenu(false);
-  }
+  };
 
   const headerTheme = isLoggedIn ? 'header_theme_white' : 'header_theme_gray';
 
